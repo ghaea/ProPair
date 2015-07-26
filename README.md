@@ -1,19 +1,5 @@
-## Application Template - Backbone
+## ProPair - The Iron Yard Final Project - FEE & RoR
 
-This template intended for quickly generating test-driven assignments for The Iron Yard. But you can just use it for whatever!
+This is the front end portion of the project.  The Ruby on Rails portion is being completed by Patrick from the RoR class.
 
-Includes:
 
-* Mocha
-* Chai
-* Underscore
-* jQuery
-* Handlebars
-* Backbone
-
-## Instructions
-
-1. `npm install`
-2. `npm start`
-
-The application will be running on http://localhost:3000 and serving static assets out of /public.# ProPair
