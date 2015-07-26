@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>propair welcomes you</title>
+	<link href="index.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="page-container view">
+		<div class="landing-header">
+			
+			<div class="landing-message">
+				<div class="navBar">
+					<div class="signIn-button">login</div>
+				</div>
+				<div class="welcome-container">
+					<span class="welcome">welcome to PROPAIR</span>
+					<p class="welcome-message">pick your match.  pair program.  code better.</p>
+					<div class="signUp-button">Sign Up</div>
+				</div>
+				<div class="cc">CC image courtesy of Kristina Alexanderson on Flickr</div>
+			</div>
+
+			<div class="signUp-window view">
+				<div class="close-button">x</div>
+
+				<input type="email" placeholder="email" class="signUp-input email"></input>
+				
+				<button class="register-button">Get Slack Invite</button>
+
+
+			</div>
+
+			<div class="login-window view">
+				<div class="close-button">x</div>
+				<input type="email" placeholder="slack username" class="signUp-input email-input"></input>
+				<input type="password" placeholder="password" class="signUp-input password-input"></input>
+				<button class="login-button">login</button>
+				<div class="first-login-message view">Check your email, follow instructions</div>
+			</div>
+
+
+		</div>
+	</div>
+
+
+	<div class="profile-container view">
+
+		<div class="navBar">
+			<div class="dashboard-button">dashboard</div>
+			<div class="signOut-button">logout</div>
+		</div>
+
+		<div class="myInfo">
+			<div class="avatar"></div>
+			<div class="info-text">
+				<div class="myName info">Ghaea</div>
+				<div class="mySlack info">slack: ghaea</div>
+				<div class="myGitHub info">github: ghaea</div>
+				<div class="mySkill info">HTML/CSS, JavaScript</div>
+				<div class="aboutMe info">
+					<p>Cupcake ipsum dolor sit amet jelly beans. Dragée gingerbread sweet roll oat cake jelly caramels. Fruitcake tart caramels marshmallow chocolate soufflé caramels cake marzipan. Bonbon gingerbread cake sugar plum bear claw sweet muffin dragée liquorice. Candy croissant chupa chups fruitcake jelly beans danish chocolate bar. Sweet roll pie toffee cupcake. Toffee cookie powder marshmallow pastry fruitcake danish lollipop chocolate bar. Gingerbread powder gingerbread. Cake macaroon fruitcake tiramisu.</p>
+				</div>
+				
+			</div>
+			<div class="edit-info info">edit</div>
+		</div>
+
+		<div id="userInfo-list"></div>
+
+
+		<div class="languages-container view">
+			<input type="checkbox" checked="JavaScript">JavaScript</input>
+			<input type="checkbox" checked="Ruby">Ruby</input>
+			<input type="checkbox" checked="Python">Python</input>
+			<input type="checkbox" checked="Swift">Swift</input>
+			<input type="checkbox"><input type="text" placeholder="other"></input>
+			<button class="saveLanguage-button">Save</button>
+		</div>
+	</div>
+
+
+	<div class="projects-container view">
+		<div class="navBar">
+			<div class="project-button">Create A Project</div>
+			<div class="profile-button">profile</div>
+			<div class="signOut-button">logout</div>
+			
+		</div>
+
+		<div class="newProject-container">
+			<div class="header">New Projects</div>
+
+			<div id="newProject-list"></div>
+
+			
+		</div>
+
+		<div class="myProject-container">
+			<div class="header">My Projects</div>
+
+			<div id="myProject-list"></div>
+
+		</div>
+	</div>
+
+	<div class="createProject-container view">
+		<div class="navBar">
+			<div class="profile-button">profile</div>
+			<div class="signOut-button">logout</div>
+		</div>
+
+		<div class="newProject-body">
+			<div class="header">Create A New Project</div>
+			<input type="text" placeholder="clever title" class="input-title new"></input>
+			<input type="text" placeholder="slack username" class="input-creator new"></input>
+
+			<textarea class="textarea-description new">Project decription here</textarea>
+			
+			<div class="languages-needed new">
+				<div class="checkbox-header new">Languages Needed</div>
+				<input type="checkbox" class="checkbox js" value="JavaScript">JavaScript</input>
+				<input type="checkbox" class="checkbox ruby" value="Ruby">Ruby</input>
+				<input type="checkbox" class="checkbox swift" value="Swift">Swift</input>
+
+				<!-- ADD LATER
+				<div class="input-other">
+					<input type="checkbox" class="checkbox"><input type="text" placeholder="other" class="other"></input></input>
+				</div> -->
+			</div>
+			<div class="setDeadline new">End Date
+				<input type="date" class="input-date"></input>
+			</div>
+			<div class="button-container">
+				<button class="saveProject-button new">Create!</button>
+
+				<button class="cancelProject-button new">Cancel</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="project-container view">
+		<div class="navBar">
+			<div class="profile-button">profile</div>
+			<div class="signOut-button">logout</div>
+		</div>
+
+		<div id="detailed-info"></div>
+
+		<div class="slack-button">Slack Me</div>
+
+		<!-- slack messages -->
+	</div>
+
+
+	<div class="feedback-container view">
+		<div class="feedback-header">Project Feedback</div>
+		<textarea>How did it go?</textarea>
+		<div class="selectRating">*****</div>
+		<button class="feedback-button">Submit</button>
+	</div>
+
+	<div class="admin-container view">
+		<div class="user-container">
+			<div id="user-list"></div>
+		</div>
+
+		<div class="project-container">
+			<div class="project-list"></div>
+		</div>
+	</div>
+
+
+	<template id="myInfo-template">
+		<div class="avatar">{{ avatar }}</div>
+		<div class="userName">{{ userName }}</div>
+		<div class="firstName">{{ firstName }}</div>
+		<div class="lastName">{{ lastName }}</div>
+		<div class="email">{{ email }}</div>
+		<div class="languages">{{ languages }}</div>
+		<div class="rating">{{ rating }}</div>
+
+	</template>
+
+	<template id="project-template">
+		<div class="singleProject">
+			<div class="projectName">{{ title }}</div>
+			<div class="projectDescription">{{ description }}</div>
+			<div class="projectCreator">Creator: {{ creatorName }}</div>
+			<div class="languages">Skills Needed: 
+				{{ required_skill_1 }} {{ required_skill_2 }} {{ required_skill_3 }}
+				</div>
+			<div class="deadline">Deadline {{ deadline }}</div>
+			<div class="{{ status }}"></div>
+			<button class="delete">delete</button>
+
+			<!--Feedback Info-->
+		</div>
+	</template>
+
+	<template id="adminUser-template">
+		<div class="userName">{{ userName }}</div>
+		<div class="userCreatedDate">{{ createdDate }}</div>
+		<div class="userLastActive">{{ lastActive }}</div>
+		<div class="userProjects">{{ projects }}</div>
+		<button class="delete-button">X</button>
+		<button class="edit-button">edit</button>		
+	</template>
+
+
+
+	<script src="libs/jquery.js"></script>
+	<script src="libs/underscore.js"></script>
+	<script src="libs/backbone.js"></script>
+	<script src="libs/handlebars.js"></script>
+	<script src="libs/moment.js"></script>
+
+	<script src="models/project-model.js"></script>
+	<script src="models/profile-model.js"></script>
+	
+	<script src="collections/profile-collection.js"></script>
+	<script src="collections/project-collection.js"></script>
+
+	<script src="views/profile-view.js"></script>
+	<script src="views/landing-view.js"></script>
+	<script src="views/project-view.js"></script>
+	
+	<script src="router.js"></script>
+	<script src="project.js"></script>
+
+
+</body>
+</html>
