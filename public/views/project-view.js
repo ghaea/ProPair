@@ -30,8 +30,7 @@ var ProjectView = Backbone.View.extend({
 
 	projectDetail: function() {
 		projectNumber = this.model.id
-		localStorage.setItem("projectId", this.model.id)
-		router.navigate("projects/" + localStorage.projectId, { trigger: true })
+		router.navigate("projects/" + projectNumber, { trigger: true })
 	},
 
 	deleteProject: function() {
@@ -42,11 +41,11 @@ var ProjectView = Backbone.View.extend({
 		}
 		else { alert("Sorry! You did not create this project.")}
 		
-		router.navigate(localStorage.dashboardURL, { trigger: true })
+		router.navigate(auth, { trigger: true })
 	},
 
 	slackButton: function() {
-		router.navigate("projects/" + localStorage.projectId + "/slack", { trigger: true })
+		router.navigate("projects/" + projectNumber + "/slack", { trigger: true })
 	},
 
 	sendButton: function() {
@@ -67,14 +66,14 @@ var ProjectView = Backbone.View.extend({
 		var newPair = new pairList() 
 
 		newPair.create({
-			project_id: localStorage.projectId
+			project_id: projectNumber
 		},
 			{headers: {Authorization: auth}
 		})
 	},
 
 	cancelButton: function() {
-		router.navigate("projects/" + localStorage.projectId, { trigger: true })
+		router.navigate("projects/" + projectNumber, { trigger: true })
 	},
 
 	template: Handlebars.compile( $("#project-template").html() )
