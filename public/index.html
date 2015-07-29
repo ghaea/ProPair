@@ -184,8 +184,11 @@
 			<div class="deadline">Deadline {{ deadline }}</div>
 			<div class="{{ status }}"></div>
 			<button class="delete">delete</button>
-			<div class="slack-button">Slack Me</div>
-			<div class="pair-button">Pair Me</div>
+			{{#if parterner_id}}
+				<div class="slack-button">Slack Me</div>
+			{{else}}
+				<div class="pair-button">Pair Me</div>
+			{{/if}}
 			<div class="slack-container view">
 				<textarea class="slack-message"></textarea>
 				<div class="cancel-button text">cancel</div>
