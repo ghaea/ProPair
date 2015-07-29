@@ -5,11 +5,11 @@ var Router = Backbone.Router.extend({
 	routes: {
 		"": "defaultRoute",
 		"dashboard/:auth": "dashboardRoute",
-		"profile": "profileRoute",
-		"newProject": "newProjectRoute",
+		"profile/:auth": "profileRoute",
+		"newProject/:auth": "newProjectRoute",
 		"admin": "adminRoute",
-		"projects/:id": "singleProjectRoute",
-		"projects/:id/slack": "slackRoute"
+		"projects/:auth/:id": "singleProjectRoute",
+		"projects/:auth/:id/slack": "slackRoute"
 	},
 
 	defaultRoute: function() {
@@ -17,15 +17,14 @@ var Router = Backbone.Router.extend({
 		$(".page-container").show()
 	},
 
-	dashboardRoute: function() {
+	dashboardRoute: function(_auth) {
 
 		$('.view').hide()
 		$("#newProject-list").empty()
 		$("#myProject-list").empty()
 		$('.projects-container').show()
 
-		localStorage.setItem("dashboardURL", window.location.hash)
-		auth = localStorage.dashboardURL.split("/")
+		auth = _auth
 
 
 	// for project list
@@ -39,12 +38,14 @@ var Router = Backbone.Router.extend({
 
 					var pageModel = page.model.attributes
 
+
+
 					$("#newProject-list").append(page.$el)
 				})
 				
 			},
 
-			headers: {Authorization: auth[1]}
+			headers: {Authorization: auth}
 		})
 
 	// for my project list
@@ -64,7 +65,7 @@ var Router = Backbone.Router.extend({
 				})		
 			},
 
-			headers: {Authorization: auth[1]}
+			headers: {Authorization: auth}
 		})
 
 	},
@@ -86,7 +87,7 @@ var Router = Backbone.Router.extend({
 				$("#userInfo-list").append(user.$el)
 			},
 
-			headers: {Authorization: auth[1]}
+			headers: {Authorization: auth}
 		})
 	},
 
@@ -105,13 +106,13 @@ var Router = Backbone.Router.extend({
 				required_skill_3: $('.swift:checkbox:checked').val(),
 				deadline: $('.input-date').val(),	
 			},
-				{headers: {Authorization: auth[1]}
+				{headers: {Authorization: auth}
 			})
 
 			$('input').val("")
 			$('.textarea-description').val("")
 
-			router.navigate(localStorage.dashboardURL, { trigger: true })
+			router.navigate("dashboard/" + auth, { trigger: true })
 		})
 	},
 
@@ -130,10 +131,12 @@ var Router = Backbone.Router.extend({
 
 				var projectModel = projectDetail.model.attributes
 
+				console.log(projectModel)
+
 				$("#detailed-info").append(projectDetail.$el)
 			},
 
-			headers: {Authorization: auth[1]}
+			headers: {Authorization: auth}
 		})
 
 	},

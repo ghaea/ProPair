@@ -30,23 +30,22 @@ var ProjectView = Backbone.View.extend({
 
 	projectDetail: function() {
 		projectNumber = this.model.id
-		localStorage.setItem("projectId", this.model.id)
-		router.navigate("projects/" + localStorage.projectId, { trigger: true })
+		router.navigate("projects/" + auth + "/" + projectNumber, { trigger: true })
 	},
 
 	deleteProject: function() {
-		console.log(this.model.attributes)
 		if(this.model.attributes.creator_name === "ghaea"){
 			this.$el.remove()
 			this.model.destroy()
 		}
 		else { alert("Sorry! You did not create this project.")}
 		
-		router.navigate(localStorage.dashboardURL, { trigger: true })
+		router.navigate("dashboard/" + auth, { trigger: true })
 	},
 
 	slackButton: function() {
-		router.navigate("projects/" + localStorage.projectId + "/slack", { trigger: true })
+		console.log(auth)
+		router.navigate("projects/" + auth + "/" + projectNumber + "/slack", { trigger: true })
 	},
 
 	sendButton: function() {
@@ -60,19 +59,19 @@ var ProjectView = Backbone.View.extend({
 	},
 
 	pairButton: function() {
-		projectNumbr = this.model.id
-		console.log("pair request sent")
 		var newPair = new pairList() 
 
 		newPair.create({
-			project_id: localStorage.projectId
+			project_id: projectNumber
 		},
-			{headers: {Authorization: auth[1]}
+			{headers: {Authorization: auth}
 		})
+
+		console.log('pair request sent')
 	},
 
 	cancelButton: function() {
-		router.navigate("projects/" + localStorage.projectId, { trigger: true })
+		router.navigate("projects/" + auth + "/" + projectNumber, { trigger: true })
 	},
 
 	template: Handlebars.compile( $("#project-template").html() )

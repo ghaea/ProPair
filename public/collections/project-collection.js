@@ -15,7 +15,7 @@ var projectId = Backbone.Collection.extend({
 	model: Project,
 
 	url: function() {
-		return "https://propair.herokuapp.com/projects/" + localStorage.projectId
+		return "https://propair.herokuapp.com/projects/" + projectNumber
 	}
 
 })
@@ -36,7 +36,7 @@ var newMessageList = Backbone.Collection.extend({
 	model: Message,
 
 	url: function() {
-		return "https://propair.herokuapp.com/projects/" + localStorage.projectId + "/chat"
+		return "https://propair.herokuapp.com/projects/" + projectNumber + "/chat"
 	}
 })
 

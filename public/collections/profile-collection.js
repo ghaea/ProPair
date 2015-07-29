@@ -19,7 +19,7 @@ var pairList = Backbone.Collection.extend({
 	model: Pair,
 
 	url: function(){
-		return "https://propair.herokuapp.com/projects/request/" + localStorage.projectId
+		return "https://propair.herokuapp.com/projects/request/" + projectNumber
 	}
 
 })

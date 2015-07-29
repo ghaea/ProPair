@@ -26,7 +26,7 @@ var ProjectView = Backbone.View.extend({
 
 	projectDetail: function() {
 		id = this.model.id
-		router.navigate("projects/" + this.model.id, { trigger: true })
+		router.navigate("projects/" + auth + "/" + this.model.id, { trigger: true })
 	},
 
 	deleteProject: function() {	

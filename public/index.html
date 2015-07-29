@@ -82,7 +82,14 @@
 		</div>
 
 		<div class="newProject-container">
-			<div class="header">New Projects</div>
+			<div class="header">
+				<div class="newProjects">New Projects</div>
+				<div class="sortBy-Buttons">
+					<div class="sortBy sort">Sort By:</div>
+					<!--<div class="dueDate sort by">Due Date</div>-->
+					<div class="newest sort by">Newest</div>
+				</div>
+			</div>
 
 			<div id="newProject-list"></div>
 
@@ -184,8 +191,11 @@
 			<div class="deadline">Deadline {{ deadline }}</div>
 			<div class="{{ status }}"></div>
 			<button class="delete">delete</button>
-			<div class="slack-button">Slack Me</div>
-			<div class="pair-button">Pair Me</div>
+			{{#if partner_id}}
+				<div class="slack-button">Slack {{ creator_name }}</div>
+			{{else}}
+				<div class="pair-button">Pair Me</div>
+			{{/if}}
 			<div class="slack-container view">
 				<textarea class="slack-message"></textarea>
 				<div class="cancel-button text">cancel</div>
@@ -221,7 +231,6 @@
 	<script src="collections/project-collection.js"></script>
 
 	<script src="views/profile-view.js"></script>
-	<script src="views/landing-view.js"></script>
 	<script src="views/project-view.js"></script>
 	
 	<script src="router.js"></script>

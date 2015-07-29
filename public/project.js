@@ -55,7 +55,7 @@ $(document).on('ready', function() {
 	})
 // End Register Button
 	$('.project-button').on('click', function() {
-		router.navigate("newProject", { trigger: true })
+		router.navigate("newProject/" + auth, { trigger: true })
 	})
 
 	$('.signOut-button').on('click', function() {
@@ -63,16 +63,41 @@ $(document).on('ready', function() {
 	})
 
 	$('.profile-button').on('click', function() {
-		router.navigate("profile", { trigger: true })
+		router.navigate("profile/" + auth, { trigger: true })
 	})
 
 	$('.cancelProject-button').on('click', function() {
-		router.navigate(localStorage.dashboardURL, { trigger: true })
+		router.navigate("dashboard/" + auth, { trigger: true })
 	})
 
 	$('.dashboard-button').on('click', function() {
-		router.navigate(localStorage.dashboardURL , { trigger: true })
+		router.navigate("dashboard/" + auth , { trigger: true })
 	})
+
+	$('.newest').on('click', function() {
+		$("#newProject-list").empty()
+
+		var collection = new projectList()
+		
+		collection.fetch({
+			success: function(data) {
+				_.each(collection, function(a, i) {
+					var page = new ProjectView({
+						model: collection.at(i)
+					})
+
+					var pageModel = page.model.attributes
+
+					$("#newProject-list").prepend(page.$el)
+				})
+				
+			},
+
+			headers: {Authorization: auth}
+		})
+	})
+
+
 
 
 	Backbone.history.start()
