@@ -13,3 +13,9 @@ var Slack = Backbone.Model.extend({
 		user2: "Unknown"
 	}
 })
+
+var Pair = Backbone.Model.extend({
+	defaults: {
+		project_id: ""
+	}
+})

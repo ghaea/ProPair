@@ -12,18 +12,6 @@ $(document).on('ready', function() {
 		$(".signUp-window").hide()
 		$(".login-window").show()
 	})
-// Start Login Button
-	$(".login-button").on('click', function() {
-
-		router.navigate("dashboard", { trigger: true })
-	})
-
-	$('.password-input').on('keyup', function(evt){
-		if(evt.keyCode === 13){
-			router.navigate("dashboard", { trigger: true })
-		}
-	})
-// End Login Button
 
 	$(".signUp-button").on('click', function() {
 		$(".login-window").hide()
@@ -79,11 +67,11 @@ $(document).on('ready', function() {
 	})
 
 	$('.cancelProject-button').on('click', function() {
-		router.navigate("dashboard", { trigger: true })
+		router.navigate(localStorage.dashboardURL, { trigger: true })
 	})
 
 	$('.dashboard-button').on('click', function() {
-		router.navigate("dashboard", { trigger: true })
+		router.navigate(localStorage.dashboardURL , { trigger: true })
 	})
 
 
