@@ -26,7 +26,7 @@ var Router = Backbone.Router.extend({
 
 		localStorage.setItem("dashboardURL", window.location.hash)
 		auth = localStorage.dashboardURL.split("/")
-
+ 
 
 	// for project list
 		var collection = new projectList()
