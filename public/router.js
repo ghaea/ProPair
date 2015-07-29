@@ -5,11 +5,12 @@ var Router = Backbone.Router.extend({
 	routes: {
 		"": "defaultRoute",
 		"dashboard/:auth": "dashboardRoute",
-		"profile": "profileRoute",
-		"newProject": "newProjectRoute",
+		"dashboard/:auth/newest": "newestRoute",
+		"profile/:auth": "profileRoute",
+		"newProject/:auth": "newProjectRoute",
 		"admin": "adminRoute",
-		"projects/:id": "singleProjectRoute",
-		"projects/:id/slack": "slackRoute"
+		"projects/:auth/:id": "singleProjectRoute",
+		"projects/:auth/:id/slack": "slackRoute"
 	},
 
 	defaultRoute: function() {
@@ -17,19 +18,18 @@ var Router = Backbone.Router.extend({
 		$(".page-container").show()
 	},
 
-	dashboardRoute: function() {
+	dashboardRoute: function(_auth) {
 
 		$('.view').hide()
 		$("#newProject-list").empty()
 		$("#myProject-list").empty()
 		$('.projects-container').show()
 
-		localStorage.setItem("dashboardURL", window.location.hash)
-		auth = localStorage.dashboardURL.split("/")
- 
+		auth = _auth
 
 	// for project list
 		var collection = new projectList()
+		console.log(collection)
 		collection.fetch({
 			success: function(data) {
 				_.each(collection, function(a, i) {
@@ -40,33 +40,47 @@ var Router = Backbone.Router.extend({
 					var pageModel = page.model.attributes
 
 					$("#newProject-list").append(page.$el)
-				})
-				
+				})				
 			},
-
-			headers: {Authorization: auth[1]}
+			headers: {Authorization: auth}
 		})
 
 	// for my project list
-		var myProjects = new projectList()
+		var myProjects = new myProjectList()
 		myProjects.fetch({
 			success: function(data) {
 				_.each(myProjects, function(a, i){
-					var creator = myProjects.models[i].attributes.creator_name
-					if(creator === "ghaea"){
-						var page = new ProjectView({
-							model: myProjects.at(i)
-						})
-						var pageModel = page.model.attributes
+					var page = new ProjectView({
+						model: myProjects.at(i)
+					})
+					var pageModel = page.model.attributes
 
-						$("#myProject-list").append(page.$el)
-					}
+					$("#myProject-list").append(page.$el)					
 				})		
 			},
-
-			headers: {Authorization: auth[1]}
+			headers: {Authorization: auth}
 		})
+	},
 
+	newestRoute: function() {
+		$("#newProject-list").empty()
+		$('.newest').hide()
+		$('.oldest').show()
+
+		var collection = new projectList()
+		
+		collection.fetch({
+			success: function(data) {
+				_.each(collection, function(a, i) {
+					var page = new ProjectView({
+						model: collection.at(i)
+					})
+					var pageModel = page.model.attributes
+					$("#newProject-list").prepend(page.$el)
+				})				
+			},
+			headers: {Authorization: auth}
+		})
 	},
 
 	profileRoute: function() {
@@ -86,7 +100,7 @@ var Router = Backbone.Router.extend({
 				$("#userInfo-list").append(user.$el)
 			},
 
-			headers: {Authorization: auth[1]}
+			headers: {Authorization: auth}
 		})
 	},
 
@@ -105,13 +119,13 @@ var Router = Backbone.Router.extend({
 				required_skill_3: $('.swift:checkbox:checked').val(),
 				deadline: $('.input-date').val(),	
 			},
-				{headers: {Authorization: auth[1]}
+				{headers: {Authorization: auth}
 			})
 
 			$('input').val("")
 			$('.textarea-description').val("")
 
-			router.navigate(localStorage.dashboardURL, { trigger: true })
+			router.navigate("dashboard/" + auth, { trigger: true })
 		})
 	},
 
@@ -130,12 +144,13 @@ var Router = Backbone.Router.extend({
 
 				var projectModel = projectDetail.model.attributes
 
+				console.log(projectModel)
+
 				$("#detailed-info").append(projectDetail.$el)
 			},
-
+git
 			headers: {Authorization: auth}
 		})
-
 	},
 
 	slackRoute: function() {
@@ -147,5 +162,4 @@ var Router = Backbone.Router.extend({
 	adminRoute: function() {
 		console.log("this is the adminRoute")
 	}
-
 })

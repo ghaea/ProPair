@@ -30,22 +30,19 @@ var ProjectView = Backbone.View.extend({
 
 	projectDetail: function() {
 		projectNumber = this.model.id
-		router.navigate("projects/" + projectNumber, { trigger: true })
+		router.navigate("projects/" + auth + "/" + projectNumber, { trigger: true })
 	},
 
 	deleteProject: function() {
-		console.log(this.model.attributes)
-		if(this.model.attributes.creator_name === "ghaea"){
-			this.$el.remove()
-			this.model.destroy()
-		}
-		else { alert("Sorry! You did not create this project.")}
+		this.$el.remove()
+		this.model.destroy()
+
 		
 		router.navigate(auth, { trigger: true })
 	},
 
 	slackButton: function() {
-		router.navigate("projects/" + projectNumber + "/slack", { trigger: true })
+		router.navigate("projects/" + auth + "/" + projectNumber + "/slack", { trigger: true })
 	},
 
 	sendButton: function() {
@@ -73,7 +70,7 @@ var ProjectView = Backbone.View.extend({
 	},
 
 	cancelButton: function() {
-		router.navigate("projects/" + projectNumber, { trigger: true })
+		router.navigate("projects/" + auth + "/" + projectNumber, { trigger: true })
 	},
 
 	template: Handlebars.compile( $("#project-template").html() )
