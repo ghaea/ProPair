@@ -190,9 +190,14 @@
 				<div class="pair-button">Pair Me</div>
 			{{/if}}
 			<div class="slack-container view">
-				<textarea class="slack-message"></textarea>
-				<div class="cancel-button text">cancel</div>
-				<div class="send-button text">send</div>
+				<div class="input-message">
+					<textarea class="slack-message"></textarea>
+					<div class="cancel-button text">cancel</div>
+					<div class="send-button text">send</div>
+				</div>
+				<div class="show-message">
+					<div class="single-message"></div>
+				</div>
 			</div>
 
 
@@ -207,6 +212,11 @@
 		<div class="userProjects">{{ projects }}</div>
 		<button class="delete-button">X</button>
 		<button class="edit-button">edit</button>		
+	</template>
+
+	<template id="message-template">
+		<div class="user">{{ user }}:</div>
+		<div class="user-message">{{ text }}</div>
 	</template>
 
 

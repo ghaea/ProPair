@@ -157,6 +157,25 @@ var Router = Backbone.Router.extend({
 		$('.slack-container').show()
 		$('.slack-button').hide()
 		$('.pair-button').hide()
+
+		var messageHistory = new messageHistory()
+
+		messageHistory.fetch({
+			success: function(data) {
+				_.each(messageHistory, function(a, i) {
+					var messageReceived = new MessageView({
+						model: messageHistory.at(i)
+					})
+
+					var message = messageReceived.model.attributes
+
+					$(".single-message").append(messageReceived.$el)
+				})
+			headers: {Authorization: auth}
+			})
+			}
+			
+		})
 	},
 
 	adminRoute: function() {

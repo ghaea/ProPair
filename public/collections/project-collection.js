@@ -40,5 +40,14 @@ var newMessageList = Backbone.Collection.extend({
 	}
 })
 
+var messageList = Backbone.Collection.extend({
+	model: MessageHistory,
+
+	url: function() {
+		return return "https://propair.herokuapp.com/projects/" + projectNumber + "/chat_history"
+	}
+
+})
+
 
 

@@ -19,8 +19,9 @@ var Project = Backbone.Model.extend({
 
 })
 
-var Message = Backbone.Model.extend({
+var MessageHistory = Backbone.Model.extend({
 	defaults: {
-		message: ""
+		user: "",
+		text: ""
 	}
 })
