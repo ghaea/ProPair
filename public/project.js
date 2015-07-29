@@ -67,11 +67,11 @@ $(document).on('ready', function() {
 	})
 
 	$('.cancelProject-button').on('click', function() {
-		router.navigate(auth, { trigger: true })
+		router.navigate("dashboard/" + auth, { trigger: true })
 	})
 
 	$('.dashboard-button').on('click', function() {
-		router.navigate(auth , { trigger: true })
+		router.navigate("dashboard/" + auth , { trigger: true })
 	})
 
 
