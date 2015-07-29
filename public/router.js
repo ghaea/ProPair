@@ -25,8 +25,14 @@ var Router = Backbone.Router.extend({
 		$("#myProject-list").empty()
 		$('.projects-container').show()
 
+<<<<<<< HEAD
 		auth = _auth
 
+=======
+		localStorage.setItem("dashboardURL", window.location.hash)
+		auth = localStorage.dashboardURL.split("/")
+ 
+>>>>>>> master
 
 	// for project list
 		var collection = new projectList()
@@ -149,6 +155,10 @@ var Router = Backbone.Router.extend({
 
 				$("#detailed-info").append(projectDetail.$el)
 			},
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 			headers: {Authorization: auth}
 		})
 	},
