@@ -133,7 +133,7 @@ var Router = Backbone.Router.extend({
 				$("#detailed-info").append(projectDetail.$el)
 			},
 
-			headers: {Authorization: auth[1]}
+			headers: {Authorization: auth}
 		})
 
 	},

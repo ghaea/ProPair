@@ -51,12 +51,14 @@ var ProjectView = Backbone.View.extend({
 
 	sendButton: function() {
 		console.log('sent', this.$('.slack-message').val())
-		/*
+		
 		var newMessage = new newMessageList()
 
 		newMessage.create({
-			message: this.$('.slack-message').val()
-		})*/
+			text: this.$('.slack-message').val()
+		},
+			{headers: {Authorization: auth}
+		})
 	},
 
 	pairButton: function() {
@@ -67,7 +69,7 @@ var ProjectView = Backbone.View.extend({
 		newPair.create({
 			project_id: localStorage.projectId
 		},
-			{headers: {Authorization: auth[1]}
+			{headers: {Authorization: auth}
 		})
 	},
 
