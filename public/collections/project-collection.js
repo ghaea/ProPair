@@ -33,7 +33,7 @@ var newProjectList = Backbone.Collection.extend({
 })
 
 var newMessageList = Backbone.Collection.extend({
-	model: Message,
+	model: MessageHistory,
 
 	url: function() {
 		return "https://propair.herokuapp.com/projects/" + projectNumber + "/chat"
