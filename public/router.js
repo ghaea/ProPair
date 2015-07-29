@@ -5,6 +5,7 @@ var Router = Backbone.Router.extend({
 	routes: {
 		"": "defaultRoute",
 		"dashboard/:auth": "dashboardRoute",
+		"dashboard/:auth/newest": "newestRoute",
 		"profile/:auth": "profileRoute",
 		"newProject/:auth": "newProjectRoute",
 		"admin": "adminRoute",
@@ -29,6 +30,7 @@ var Router = Backbone.Router.extend({
 
 	// for project list
 		var collection = new projectList()
+		console.log(collection)
 		collection.fetch({
 			success: function(data) {
 				_.each(collection, function(a, i) {
@@ -38,36 +40,48 @@ var Router = Backbone.Router.extend({
 
 					var pageModel = page.model.attributes
 
-
-
 					$("#newProject-list").append(page.$el)
-				})
-				
+				})				
 			},
-
 			headers: {Authorization: auth}
 		})
 
 	// for my project list
-		var myProjects = new projectList()
+		var myProjects = new myProjectList()
 		myProjects.fetch({
 			success: function(data) {
 				_.each(myProjects, function(a, i){
-					var creator = myProjects.models[i].attributes.creator_name
-					if(creator === "ghaea"){
-						var page = new ProjectView({
-							model: myProjects.at(i)
-						})
-						var pageModel = page.model.attributes
+					var page = new ProjectView({
+						model: myProjects.at(i)
+					})
+					var pageModel = page.model.attributes
 
-						$("#myProject-list").append(page.$el)
-					}
+					$("#myProject-list").append(page.$el)					
 				})		
 			},
-
 			headers: {Authorization: auth}
 		})
+	},
 
+	newestRoute: function() {
+		$("#newProject-list").empty()
+		$('.newest').hide()
+		$('.oldest').show()
+
+		var collection = new projectList()
+		
+		collection.fetch({
+			success: function(data) {
+				_.each(collection, function(a, i) {
+					var page = new ProjectView({
+						model: collection.at(i)
+					})
+					var pageModel = page.model.attributes
+					$("#newProject-list").prepend(page.$el)
+				})				
+			},
+			headers: {Authorization: auth}
+		})
 	},
 
 	profileRoute: function() {
@@ -135,10 +149,8 @@ var Router = Backbone.Router.extend({
 
 				$("#detailed-info").append(projectDetail.$el)
 			},
-
 			headers: {Authorization: auth}
 		})
-
 	},
 
 	slackRoute: function() {
@@ -150,5 +162,4 @@ var Router = Backbone.Router.extend({
 	adminRoute: function() {
 		console.log("this is the adminRoute")
 	}
-
 })

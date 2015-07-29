@@ -34,17 +34,13 @@ var ProjectView = Backbone.View.extend({
 	},
 
 	deleteProject: function() {
-		if(this.model.attributes.creator_name === "ghaea"){
-			this.$el.remove()
-			this.model.destroy()
-		}
-		else { alert("Sorry! You did not create this project.")}
+		this.$el.remove()
+		this.model.destroy()
 		
 		router.navigate("dashboard/" + auth, { trigger: true })
 	},
 
 	slackButton: function() {
-		console.log(auth)
 		router.navigate("projects/" + auth + "/" + projectNumber + "/slack", { trigger: true })
 	},
 

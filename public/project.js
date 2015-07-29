@@ -75,26 +75,15 @@ $(document).on('ready', function() {
 	})
 
 	$('.newest').on('click', function() {
-		$("#newProject-list").empty()
+		router.navigate("dashboard/" + auth +"/newest", { trigger: true })
+	})
 
-		var collection = new projectList()
+	$('.oldest').on('click', function() {
+		$('.oldest').hide()
+		$('.newest').show()
 		
-		collection.fetch({
-			success: function(data) {
-				_.each(collection, function(a, i) {
-					var page = new ProjectView({
-						model: collection.at(i)
-					})
+		router.navigate("dashboard/" + auth , { trigger: true })
 
-					var pageModel = page.model.attributes
-
-					$("#newProject-list").prepend(page.$el)
-				})
-				
-			},
-
-			headers: {Authorization: auth}
-		})
 	})
 
 

@@ -2,7 +2,7 @@ var projectList = Backbone.Collection.extend({
 
 	model: Project,
 
-	url: "https://propair.herokuapp.com/projects",
+	url: "https://propair.herokuapp.com/other_projects",
 
 	initialize: function() {
 
@@ -24,7 +24,19 @@ var newProjectList = Backbone.Collection.extend({
 
 	model: Project,
 
-	url: "https://propair.herokuapp.com/users/1/projects",
+	url: "https://propair.herokuapp.com/projects",
+
+	initialize: function() {
+
+	}
+
+})
+
+var myProjectList = Backbone.Collection.extend({
+
+	model: Project,
+
+	url: "https://propair.herokuapp.com/my_projects",
 
 	initialize: function() {
 
