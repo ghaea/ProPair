@@ -168,7 +168,7 @@ var Router = Backbone.Router.extend({
 					var messageReceived = new MessageView({
 						model: messages[i]
 					})
-					
+					$(".single-message").append(messageReceived.$el)
 				})		
 			},
 			error: function() {
