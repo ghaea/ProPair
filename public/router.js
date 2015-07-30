@@ -1,4 +1,4 @@
-var storage, auth
+var storage, authToken
 var email
 var Router = Backbone.Router.extend({
 
