@@ -157,7 +157,7 @@ var Router = Backbone.Router.extend({
 		$('.pair-button').hide()
 
 		var messageHistory = new messageHistoryList()
-		console.log('hello')
+		console.log('hello', messageHistory)
 		messageHistory.fetch({
 			success: function(data) {
 				console.log(messageHistory)
