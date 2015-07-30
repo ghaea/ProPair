@@ -13,10 +13,12 @@ var Project = Backbone.Model.extend({
 		in_progress: "false" 
 	},
 
-	initialize: function() {
-		
-	}
+})
 
+var Message = Backbone.Model.extend({
+	defaults: {
+		text: ""
+	}
 })
 
 var MessageHistory = Backbone.Model.extend({

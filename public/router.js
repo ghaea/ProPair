@@ -158,7 +158,7 @@ var Router = Backbone.Router.extend({
 		$('.slack-button').hide()
 		$('.pair-button').hide()
 
-		var messageHistory = new messageHistory()
+		var messageHistory = new messageHistoryList()
 
 		messageHistory.fetch({
 			success: function(data) {
