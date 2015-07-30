@@ -180,6 +180,7 @@ var Router = Backbone.Router.extend({
 				headers: {Authorization: authToken}			
 			})
 		}
+		fetch()
 		setInterval(fetch, 50000)
 	},
 
