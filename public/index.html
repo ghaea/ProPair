@@ -175,20 +175,22 @@
 
 	<template id="project-template">
 		<div class="singleProject">
-			<div class="projectName">{{ title }}</div>
-			<div class="projectDescription">{{ description }}</div>
-			<div class="projectCreator">Creator: {{ creator_name }}</div>
-			<div class="languages">Skills Needed: 
-				{{ required_skill_1 }} {{ required_skill_2 }} {{ required_skill_3 }}
-				</div>
-			<div class="deadline">Deadline {{ deadline }}</div>
-			<div class="{{ status }}"></div>
-			<button class="delete">delete</button>
-			{{#if partner_id}}
-				<div class="slack-button">Slack: {{ creator_name }}</div>
-			{{else}}
-				<div class="pair-button">Pair Me</div>
-			{{/if}}
+			<div class="project-info">
+				<div class="projectName">{{ title }}</div>
+				<div class="projectDescription">{{ description }}</div>
+				<div class="projectCreator">Creator: {{ creator_name }}</div>
+				<div class="languages">Skills Needed: 
+					{{ required_skill_1 }} {{ required_skill_2 }} {{ required_skill_3 }}
+					</div>
+				<div class="deadline">Deadline {{ deadline }}</div>
+				<div class="{{ status }}"></div>
+				<button class="delete">delete</button>
+				{{#if partner_id}}
+					<div class="slack-button">Slack: {{ creator_name }}</div>
+				{{else}}
+					<div class="pair-button">Pair Me</div>
+				{{/if}}
+			</div>
 			<div class="slack-container view">
 				<div class="input-message">
 					<textarea class="slack-message"></textarea>

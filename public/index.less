@@ -166,51 +166,6 @@ input {
 	vertical-align: top;
 	margin-right: 2%;
 	margin-bottom: 10px;
-
-}
-
-.singleProject {
-	background: rgba(50, 50, 50, .95);
-	color: rgb(250, 250, 250);
-	padding: 10px;
-	width: 100%;
-	height: 300px;
-	display: inline-block;
-	border-radius: 5px;
-	position: relative;
-
-	.projectName {
-		font-size: 20px;
-		margin-bottom: 5px;
-		color: rgb(25, 181, 188);
-		font-weight: bold;
-	}
-
-	.projectName:hover {
-		color: RGB(199, 223, 230);
-	}
-
-	.projectDescription {
-		margin-bottom: 10px;
-		height: 155px;
-		color: rgb(150, 150, 150);
-		overflow: scroll;
-
-	}
-
-	.projectCreator {
-		margin-bottom: 10px;
-	}
-
-
-	.languages {
-		margin-bottom: 10px;
-		font-weight: 200;
-	}
-
-	.deadline {
-		font-weight: 200;
-	}
 }
 
 .header {
@@ -378,38 +333,76 @@ input {
 	}
 
 	.singleProject {
-		background: none;
-		border-radius: 0;
-		height: 450px;
-
-		.projectName:hover {
-			color: rgb(25, 181, 188);
-		};
-	}
-
-	.delete {
-		display: none;
-	}
-
-	.slack-button, .pair-button {
+		background: rgba(50, 50, 50, .95);
 		color: rgb(250, 250, 250);
-		border: solid 1px rgb(250, 250, 250);
-		display: inline-block;
-		font-size: 20px;
 		padding: 10px;
+		width: 100%;
+		height: 300px;
+		display: inline-block;
 		border-radius: 5px;
-		margin-left: 60px;
-		margin-top: 20px;
-	}
+		position: relative;
 
-	.slack-button:hover {
-		color: RGB(117, 241, 92);
-		border: solid 1px RGB(117, 241, 92);
-	}
+		.project-info{
+			width: 40%;
+			display: inline-block;
 
-	.pair-button:hover {
-		color: RGB(101, 236, 252);
-		border: solid 1px RGB(101, 236, 252);
+			.projectName {
+				font-size: 20px;
+				margin-bottom: 5px;
+				color: rgb(25, 181, 188);
+				font-weight: bold;
+			}
+
+			.projectName:hover {
+				color: RGB(199, 223, 230);
+			}
+
+			.projectDescription {
+				margin-bottom: 10px;
+				height: 155px;
+				color: rgb(150, 150, 150);
+				overflow: scroll;
+
+			}
+
+			.projectCreator {
+				margin-bottom: 10px;
+			}
+
+
+			.languages {
+				margin-bottom: 10px;
+				font-weight: 200;
+			}
+
+			.deadline {
+				font-weight: 200;
+			}
+		}
+		.delete {
+			display: none;
+		}
+
+		.slack-button, .pair-button {
+			color: rgb(250, 250, 250);
+			border: solid 1px rgb(250, 250, 250);
+			display: inline-block;
+			font-size: 20px;
+			padding: 10px;
+			border-radius: 5px;
+			margin-left: 60px;
+			margin-top: 20px;
+		}
+
+		.slack-button:hover {
+			color: RGB(117, 241, 92);
+			border: solid 1px RGB(117, 241, 92);
+		}
+
+		.pair-button:hover {
+			color: RGB(101, 236, 252);
+			border: solid 1px RGB(101, 236, 252);
+		}
 	}
 
 }
