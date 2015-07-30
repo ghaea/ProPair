@@ -168,8 +168,8 @@ var Router = Backbone.Router.extend({
 
 					var message = messageReceived.model.attributes.messages
 					console.log(message)
-					_.each(message, function(){
-						$(".single-message").append(message)
+					_.each(message, function(msg){
+						$(".single-message").append(msg)
 					})
 					
 				})		
