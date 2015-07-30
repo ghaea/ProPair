@@ -159,7 +159,6 @@ var Router = Backbone.Router.extend({
 		var messageHistory = new messageHistoryList()
 		console.log('hello')
 		messageHistory.fetch({
-			console.log("fetch")
 			success: function(data) {
 				console.log(messageHistory)
 				_.each(messageHistory, function(a, i) {
