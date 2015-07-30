@@ -25,7 +25,7 @@ var Router = Backbone.Router.extend({
 		$("#myProject-list").empty()
 		$('.projects-container').show()
 
-		authToken = _auth
+		authToken = auth
 
 	// for project list
 		var collection = new projectList()
