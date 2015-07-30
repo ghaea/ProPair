@@ -157,13 +157,16 @@ var Router = Backbone.Router.extend({
 		$('.pair-button').hide()
 
 		var messageHistory = new messageHistoryList()
-		console.log('hello', messageHistory)
+
 		messageHistory.fetch({
 			success: function(data) {
 				
 				_.each(messageHistory, function(a, i) {
-					console.log(messageHistory.models.at(0))
-					var messageReceived = new MessageView({
+					console.log(messageHistory.models)
+					var messageReceived = new MessageView(
+						var test = messageReceived.model.attributes.messages
+						console.log(test)
+					{
 						model: messageHistory.at(i)
 					})
 
