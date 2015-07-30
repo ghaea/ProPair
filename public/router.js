@@ -180,7 +180,7 @@ var Router = Backbone.Router.extend({
 			})
 		}
 		fetch()
-		setInterval(fetch, 50000)
+		//setInterval(fetch, 50000)
 	},
 
 	adminRoute: function() {
