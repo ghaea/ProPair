@@ -30,7 +30,7 @@ var ProjectView = Backbone.View.extend({
 
 	projectDetail: function() {
 		projectNumber = this.model.id
-		router.navigate("projects/" + auth + "/" + projectNumber, { trigger: true })
+		router.navigate("projects/" + authToken + "/" + projectNumber, { trigger: true })
 	},
 
 	deleteProject: function() {
@@ -38,11 +38,11 @@ var ProjectView = Backbone.View.extend({
 		this.model.destroy()
 
 		
-		router.navigate(auth, { trigger: true })
+		router.navigate(authToken, { trigger: true })
 	},
 
 	slackButton: function() {
-		router.navigate("projects/" + auth + "/" + projectNumber + "/slack", { trigger: true })
+		router.navigate("projects/" + authToken + "/" + projectNumber + "/slack", { trigger: true })
 	},
 
 	sendButton: function() {
@@ -52,7 +52,7 @@ var ProjectView = Backbone.View.extend({
 		newMessage.create({
 			text: this.$('.slack-message').val()
 		},
-			{headers: {Authorization: auth}
+			{headers: {Authorization: authToken}
 		})
 
 		this.$('.slack-message').val("")
@@ -66,12 +66,12 @@ var ProjectView = Backbone.View.extend({
 		newPair.create({
 			project_id: projectNumber
 		},
-			{headers: {Authorization: auth}
+			{headers: {Authorization: authToken}
 		})
 	},
 
 	cancelButton: function() {
-		router.navigate("projects/" + auth + "/" + projectNumber, { trigger: true })
+		router.navigate("projects/" + authToken + "/" + projectNumber, { trigger: true })
 	},
 
 	template: Handlebars.compile( $("#project-template").html() )

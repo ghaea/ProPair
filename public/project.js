@@ -55,7 +55,7 @@ $(document).on('ready', function() {
 	})
 // End Register Button
 	$('.project-button').on('click', function() {
-		router.navigate("newProject/" + auth, { trigger: true })
+		router.navigate("newProject/" + authToken, { trigger: true })
 	})
 
 	$('.signOut-button').on('click', function() {
@@ -63,15 +63,15 @@ $(document).on('ready', function() {
 	})
 
 	$('.profile-button').on('click', function() {
-		router.navigate("profile/" + auth, { trigger: true })
+		router.navigate("profile/" + authToken, { trigger: true })
 	})
 
 	$('.cancelProject-button').on('click', function() {
-		router.navigate("dashboard/" + auth, { trigger: true })
+		router.navigate("dashboard/" + authToken, { trigger: true })
 	})
 
 	$('.dashboard-button').on('click', function() {
-		router.navigate("dashboard/" + auth , { trigger: true })
+		router.navigate("dashboard/" + authToken , { trigger: true })
 	})
 
 

@@ -18,14 +18,14 @@ var Router = Backbone.Router.extend({
 		$(".page-container").show()
 	},
 
-	dashboardRoute: function(_auth) {
+	dashboardRoute: function(auth) {
 
 		$('.view').hide()
 		$("#newProject-list").empty()
 		$("#myProject-list").empty()
 		$('.projects-container').show()
 
-		auth = _auth
+		authToken = _auth
 
 	// for project list
 		var collection = new projectList()
@@ -42,7 +42,7 @@ var Router = Backbone.Router.extend({
 					$("#newProject-list").append(page.$el)
 				})				
 			},
-			headers: {Authorization: auth}
+			headers: {Authorization: authToken}
 		})
 
 	// for my project list
@@ -58,7 +58,7 @@ var Router = Backbone.Router.extend({
 					$("#myProject-list").append(page.$el)					
 				})		
 			},
-			headers: {Authorization: auth}
+			headers: {Authorization: authToken}
 		})
 	},
 
@@ -79,7 +79,7 @@ var Router = Backbone.Router.extend({
 					$("#newProject-list").prepend(page.$el)
 				})				
 			},
-			headers: {Authorization: auth}
+			headers: {Authorization: authToken}
 		})
 	},
 
@@ -100,7 +100,7 @@ var Router = Backbone.Router.extend({
 				$("#userInfo-list").append(user.$el)
 			},
 
-			headers: {Authorization: auth}
+			headers: {Authorization: authToken}
 		})
 	},
 
@@ -119,17 +119,17 @@ var Router = Backbone.Router.extend({
 				required_skill_3: $('.swift:checkbox:checked').val(),
 				deadline: $('.input-date').val(),	
 			},
-				{headers: {Authorization: auth}
+				{headers: {Authorization: authToken}
 			})
 
 			$('input').val("")
 			$('.textarea-description').val("")
 
-			router.navigate("dashboard/" + auth, { trigger: true })
+			router.navigate("dashboard/" + authToken, { trigger: true })
 		})
 	},
 
-	singleProjectRoute: function(_auth, id) {
+	singleProjectRoute: function(auth, id) {
 		$('.view').hide()
 		$("#detailed-info").empty()
 		$('.project-container').show()
@@ -147,11 +147,11 @@ var Router = Backbone.Router.extend({
 				$("#detailed-info").append(projectDetail.$el)
 			},
 
-			headers: {Authorization: auth}
+			headers: {Authorization: authToken}
 		})
 	},
 
-	slackRoute: function(_auth, id) {
+	slackRoute: function(auth, id) {
 		$('.slack-container').show()
 		$('.slack-button').hide()
 		$('.pair-button').hide()
@@ -174,7 +174,7 @@ var Router = Backbone.Router.extend({
 			error: function() {
 				console.log('error', arguments)
 			}, 
-			headers: {Authorization: auth}			
+			headers: {Authorization: authToken}			
 		})
 	},
 
