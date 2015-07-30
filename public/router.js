@@ -129,7 +129,7 @@ var Router = Backbone.Router.extend({
 		})
 	},
 
-	singleProjectRoute: function(_auth) {
+	singleProjectRoute: function(_auth, id) {
 		$('.view').hide()
 		$("#detailed-info").empty()
 		$('.project-container').show()
@@ -151,7 +151,7 @@ var Router = Backbone.Router.extend({
 		})
 	},
 
-	slackRoute: function(_auth) {
+	slackRoute: function(_auth, id) {
 		$('.slack-container').show()
 		$('.slack-button').hide()
 		$('.pair-button').hide()
