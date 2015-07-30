@@ -52,13 +52,11 @@ var ProjectView = Backbone.View.extend({
 		newMessage.create({
 			text: this.$('.slack-message').val()
 		},
-
-			{success: function(data) {
-				this.$('.slack-message').val("")
-			}},
 			{headers: {Authorization: auth}
-		}
+			}
 		})
+		this.$('.slack-message').val("")
+
 	},
 
 	pairButton: function() {
