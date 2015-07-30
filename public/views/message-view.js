@@ -7,8 +7,8 @@ var MessageView = Backbone.View.extend({
 	},
 
 	render: function() {
-		var attrs = this.model.attributes.messages
-
+		var attrs = this
+		console.log('attrs', attrs)
 		var htmlString = this.template(attrs)
 		this.$el.html(htmlString)
 	},
