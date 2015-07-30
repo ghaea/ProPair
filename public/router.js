@@ -109,7 +109,7 @@ var Router = Backbone.Router.extend({
 		$('.createProject-container').show()
 
 		$('.saveProject-button').on('click', function() {	
-			var newProject = new projectList()
+			var newProject = new newProjectList()
 
 			newProject.create({
 				title: $('.input-title').val(),
