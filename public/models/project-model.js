@@ -9,7 +9,6 @@ var Project = Backbone.Model.extend({
 		status: "unknown",
 		remote: "false",
 		deadline: "never",
-		active: "false",
 		in_progress: "false" 
 	},
 
