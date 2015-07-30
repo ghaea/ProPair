@@ -28,7 +28,7 @@ var newProjectList = Backbone.Collection.extend({
 
 	model: Project,
 
-	url: "https://propair.herokuapp.com/projects"
+	url: "https://propair.herokuapp.com/other_projects"
 
 })
 
