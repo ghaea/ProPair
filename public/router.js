@@ -129,7 +129,7 @@ var Router = Backbone.Router.extend({
 		})
 	},
 
-	singleProjectRoute: function(auth) {
+	singleProjectRoute: function(auth, projectNumber) {
 		$('.view').hide()
 		$("#detailed-info").empty()
 		$('.project-container').show()
