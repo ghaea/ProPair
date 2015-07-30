@@ -62,7 +62,7 @@ var Router = Backbone.Router.extend({
 		})
 	},
 
-	newestRoute: function(_auth) {
+	newestRoute: function(auth) {
 		$("#newProject-list").empty()
 		$('.newest').hide()
 		$('.oldest').show()
@@ -83,7 +83,7 @@ var Router = Backbone.Router.extend({
 		})
 	},
 
-	profileRoute: function(_auth) {
+	profileRoute: function(auth) {
 		$('.view').hide()
 		$('.profile-container').show()
 
@@ -104,7 +104,7 @@ var Router = Backbone.Router.extend({
 		})
 	},
 
-	newProjectRoute: function(_auth) {
+	newProjectRoute: function(auth) {
 		$('.view').hide()
 		$('.createProject-container').show()
 
@@ -129,7 +129,7 @@ var Router = Backbone.Router.extend({
 		})
 	},
 
-	singleProjectRoute: function(_auth) {
+	singleProjectRoute: function(auth) {
 		$('.view').hide()
 		$("#detailed-info").empty()
 		$('.project-container').show()
@@ -151,7 +151,7 @@ var Router = Backbone.Router.extend({
 		})
 	},
 
-	slackRoute: function(_auth) {
+	slackRoute: function(auth) {
 		$('.slack-container').show()
 		$('.slack-button').hide()
 		$('.pair-button').hide()
