@@ -29,7 +29,7 @@ var Router = Backbone.Router.extend({
 
 	// for project list
 		var collection = new projectList()
-		console.log(collection)
+
 		collection.fetch({
 			success: function(data) {
 				_.each(collection, function(a, i) {
@@ -162,11 +162,11 @@ var Router = Backbone.Router.extend({
 			success: function(data) {
 				
 				_.each(messageHistory, function(a, i) {
-					console.log('msgs', messageHistory.models[0].attributes.messages)
+					
 					var messages = messageHistory.models[0].attributes.messages
 					console.log(messages)
 					var messageReceived = new MessageView({
-						model: messages.at(i)
+						model: messages[i]
 					})
 					
 				})		
