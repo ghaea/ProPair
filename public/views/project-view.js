@@ -46,14 +46,18 @@ var ProjectView = Backbone.View.extend({
 	},
 
 	sendButton: function() {
-		console.log('sent', this.$('.slack-message').val())
 		
 		var newMessage = new newMessageList()
 
 		newMessage.create({
 			text: this.$('.slack-message').val()
 		},
+
+			{success: function(data) {
+				this.$('.slack-message').val("")
+			}},
 			{headers: {Authorization: auth}
+		}
 		})
 	},
 
