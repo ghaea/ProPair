@@ -158,13 +158,13 @@ var Router = Backbone.Router.extend({
 
 		var messageHistory = new messageHistoryList()
 
-		messageHistory.fetch({
+		setInterval( messageHistory.fetch({
 			success: function(data) {
-				console.log(messageHistory)
+
 				_.each(messageHistory, function(a, i) {
-					console.log(a, i)
+
 					var messages = messageHistory.models[0].attributes.messages
-					console.log(messages)
+
 					_.each(messages, function(a, i) {
 						var messageReceived = new MessageView({
 							model: messages[i]
@@ -177,7 +177,7 @@ var Router = Backbone.Router.extend({
 				console.log('error', arguments)
 			}, 
 			headers: {Authorization: authToken}			
-		})
+		}), 5000)
 	},
 
 	adminRoute: function() {

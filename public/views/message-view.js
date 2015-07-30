@@ -8,10 +8,11 @@ var MessageView = Backbone.View.extend({
 
 	render: function() {
 		var attrs = this.model
-		console.log('attrs', attrs)
+
 		var htmlString = this.template(attrs)
 		this.$el.html(htmlString)
 	},
 
 	template: Handlebars.compile( $("#message-template").html() )	
 })
+
