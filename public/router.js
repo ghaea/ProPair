@@ -133,7 +133,7 @@ var Router = Backbone.Router.extend({
 		$('.view').hide()
 		$("#detailed-info").empty()
 		$('.project-container').show()
-		
+		console.log(arguments)
 		var project = new projectId()
 
 		project.fetch({
