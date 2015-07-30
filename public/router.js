@@ -125,7 +125,7 @@ var Router = Backbone.Router.extend({
 			$('input').val("")
 			$('.textarea-description').val("")
 
-			//router.navigate("dashboard/" + authToken, { trigger: true })
+			router.navigate("dashboard/" + authToken, { trigger: true })
 		})
 	},
 
@@ -162,7 +162,7 @@ var Router = Backbone.Router.extend({
 			success: function(data) {
 				
 				_.each(messageHistory, function(a, i) {
-
+					console.log(messageHistory)
 					var messageReceived = new MessageView({
 						model: messageHistory.at(i)
 					})
