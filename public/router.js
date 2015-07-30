@@ -171,6 +171,9 @@ var Router = Backbone.Router.extend({
 					$(".single-message").append(messageReceived.$el)
 				})		
 			},
+			error: function() {
+				console.log('error', arguments)
+			}, 
 			headers: {Authorization: auth}			
 		})
 	},
