@@ -110,7 +110,7 @@ var Router = Backbone.Router.extend({
 
 		$('.saveProject-button').on('click', function() {	
 			var newProject = new newProjectList()
-
+			console.log('new')
 			newProject.create({
 				title: $('.input-title').val(),
 				description: $('.textarea-description').val(),
@@ -125,7 +125,7 @@ var Router = Backbone.Router.extend({
 			$('input').val("")
 			$('.textarea-description').val("")
 
-			router.navigate("dashboard/" + authToken, { trigger: true })
+			//router.navigate("dashboard/" + authToken, { trigger: true })
 		})
 	},
 
@@ -162,7 +162,7 @@ var Router = Backbone.Router.extend({
 			success: function(data) {
 				
 				_.each(messageHistory, function(a, i) {
-					
+
 					var messageReceived = new MessageView({
 						model: messageHistory.at(i)
 					})
