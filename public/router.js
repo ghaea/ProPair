@@ -162,12 +162,17 @@ var Router = Backbone.Router.extend({
 			success: function(data) {
 				
 				_.each(messageHistory, function(a, i) {
+					
 					var messageReceived = new MessageView({
-						var message = messageReceived.model.attributes.messages
-						model: message.at(i)
+						model: messageHistory.at(i)
 					})
 
-					$(".single-message").append(messageReceived.$el)
+					var message = messageReceived.model.attributes.messages
+					console.log(message)
+					_.each(message, function(msg, i){
+						$(".single-message").append(message[i])
+					})
+					
 				})		
 			},
 			error: function() {
