@@ -158,26 +158,29 @@ var Router = Backbone.Router.extend({
 
 		var messageHistory = new messageHistoryList()
 
-		setInterval( messageHistory.fetch({
-			success: function(data) {
+		var fetch = function() {
+			messageHistory.fetch({
+				success: function(data) {
 
-				_.each(messageHistory, function(a, i) {
+					_.each(messageHistory, function(a, i) {
 
-					var messages = messageHistory.models[0].attributes.messages
+						var messages = messageHistory.models[0].attributes.messages
 
-					_.each(messages, function(a, i) {
-						var messageReceived = new MessageView({
-							model: messages[i]
+						_.each(messages, function(a, i) {
+							var messageReceived = new MessageView({
+								model: messages[i]
+							})
+							$(".single-message").prepend(messageReceived.$el)
 						})
-						$(".single-message").append(messageReceived.$el)
-					})
-				})		
-			},
-			error: function() {
-				console.log('error', arguments)
-			}, 
-			headers: {Authorization: authToken}			
-		}), 5000)
+					})		
+				},
+				error: function() {
+					console.log('error', arguments)
+				}, 
+				headers: {Authorization: authToken}			
+			})
+		}
+		setInterval(fetch, 50000)
 	},
 
 	adminRoute: function() {
