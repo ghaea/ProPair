@@ -53,10 +53,9 @@ var ProjectView = Backbone.View.extend({
 			text: this.$('.slack-message').val()
 		},
 			{headers: {Authorization: auth}
-			}
 		})
-		this.$('.slack-message').val("")
 
+		this.$('.slack-message').val("")
 	},
 
 	pairButton: function() {
