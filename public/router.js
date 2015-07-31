@@ -159,7 +159,7 @@ var Router = Backbone.Router.extend({
 		var messageHistory = new messageHistoryList()
 
 		fetch = function() {
-			$(".single-message").val("")
+			$(".single-message").empty()
 			messageHistory.fetch({
 				success: function(data) {
 
