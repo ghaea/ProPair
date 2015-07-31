@@ -193,7 +193,7 @@ var Router = Backbone.Router.extend({
 		}
 		fetch()
 		setInterval(fetch, 50000)
-		$(".show-message")[50].scrollTop = 200
+		$(".single-message")[50].scrollTop = 200
 
 	},
 
