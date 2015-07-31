@@ -159,6 +159,9 @@ var Router = Backbone.Router.extend({
 		$('.slack-button').hide()
 		$('.pair-button').hide()
 
+		authToken = auth
+		projectNumber = id
+
 		var messageHistory = new messageHistoryList()
 
 		fetch = function() {
