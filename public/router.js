@@ -134,6 +134,9 @@ var Router = Backbone.Router.extend({
 		$("#detailed-info").empty()
 		$('.project-container').show()
 		console.log(arguments)
+
+		authToken = auth
+		projectNumber = id
 		var project = new projectId()
 
 		project.fetch({
@@ -160,6 +163,7 @@ var Router = Backbone.Router.extend({
 
 		fetch = function() {
 			$(".single-message").empty()
+
 			messageHistory.fetch({
 				success: function(data) {
 
@@ -184,6 +188,7 @@ var Router = Backbone.Router.extend({
 		}
 		fetch()
 		setInterval(fetch, 50000)
+
 	},
 
 	adminRoute: function() {
