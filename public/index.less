@@ -375,15 +375,17 @@ input {
 
 #detailed-info {
 	padding: 0 50px;
+	height: 90%
 
 	.projectView {
 		width: 100%;
+		height: 100%;
 	
 
 		.singleProject {
 			background: none;
 			border-radius: 0;
-			height: 90%;
+			height: 100%;
 
 			.projectName:hover {
 				color: rgb(25, 181, 188);
@@ -391,6 +393,7 @@ input {
 
 			.project-info {
 				width: 50%;
+				display: inline-block;
 			}
 		}
 
@@ -426,6 +429,8 @@ input {
 .slack-container {
 	display: none;
 	margin-top: 20px;
+	display: inline-block;
+	width: 50%;
 }
 
 .input-message {
@@ -476,9 +481,10 @@ input {
 	overflow: scroll;
 	padding: 10px;
 	font-weight: 200;
-	position: absolute;
-	top: 15px;
-	right: 0;
+
+	.user {
+		font-weight: bold;
+	}
 
 	.user, .user-message {
 		display: inline-block;
