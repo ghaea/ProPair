@@ -21,6 +21,7 @@ var Router = Backbone.Router.extend({
 	dashboardRoute: function(auth) {
 
 		$('.view').hide()
+		$('.slack-container').hide()
 		$("#newProject-list").empty()
 		$("#myProject-list").empty()
 		$('.projects-container').show()
@@ -172,7 +173,7 @@ var Router = Backbone.Router.extend({
 
 					_.each(messageHistory, function(a, i) {
 						var messages = messageHistory.models[i].attributes
-						console.log(messages)
+				
 						var messageReceived
 						_.each(messages, function(a, i) {
 							messageReceived = new MessageView({
