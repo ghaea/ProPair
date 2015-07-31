@@ -41,6 +41,7 @@ var Router = Backbone.Router.extend({
 					var pageModel = page.model.attributes
 
 					$("#newProject-list").append(page.$el)
+					$('.slack-container').hide()
 				})				
 			},
 			headers: {Authorization: authToken}
