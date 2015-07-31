@@ -135,7 +135,6 @@ var Router = Backbone.Router.extend({
 		$('.view').hide()
 		$("#detailed-info").empty()
 		$('.project-container').show()
-		$('.slack-container').hide()
 
 		authToken = auth
 		projectNumber = id
@@ -150,6 +149,7 @@ var Router = Backbone.Router.extend({
 				var projectModel = projectDetail.model.attributes
 
 				$("#detailed-info").append(projectDetail.$el)
+				$('.slack-container').hide()
 			},
 
 			headers: {Authorization: authToken}
