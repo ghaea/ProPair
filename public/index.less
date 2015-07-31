@@ -402,6 +402,76 @@ input {
 				display: inline-block;
 				width: 50%;
 			}
+
+			/* Slack Message Window */
+
+
+			.input-message {
+				display: inline-block;	
+				width: 300px;
+				text-align: right;
+				vertical-align: top;
+			}
+
+			.slack-message {
+				width: 300px;
+				height: 100px;
+				font-size: 16px;
+				padding: 5px;
+				border-radius: 5px;
+			}
+
+			.text {
+				display: inline-block;
+				padding: 5px;
+				border-radius: 5px;
+				vertical-align: bottom;
+				color: rgb(100, 100, 100);
+			}
+
+			.send-button {
+				color: rgb(250, 250, 250);
+				border: solid 1px rgb(250, 250, 250);
+				display: inline-block;
+				padding: 5px;
+				border-radius: 5px;
+				vertical-align: bottom;
+			}
+
+			.cancel-button {
+				position: relative;
+				right: 195px;
+			}
+
+			.show-message {
+				background: rgb(50, 50, 50);
+				color: rgb(250, 250, 250);
+				border-radius: 5px;
+				display: inline-block;
+				margin-left: 20px;
+				width: 50%;
+				height: 90%;
+				overflow: scroll;
+				padding: 10px;
+				font-weight: 200;
+
+				.user {
+					font-weight: bold;
+				}
+
+				.user, .user-message {
+					display: inline-block;
+				}
+
+				.hero {
+					color: RGB(199, 223, 230);
+				}
+			}
+
+			.message-received {
+				margin: 7px 0;
+				font-size: 14px;
+			}
 		}
 
 		.delete {
@@ -432,73 +502,5 @@ input {
 
 }
 
-/* Slack Message Window */
 
-
-.input-message {
-	display: inline-block;	
-	width: 300px;
-	text-align: right;
-	vertical-align: top;
-}
-
-.slack-message {
-	width: 300px;
-	height: 100px;
-	font-size: 16px;
-	padding: 5px;
-	border-radius: 5px;
-}
-
-.text {
-	display: inline-block;
-	padding: 5px;
-	border-radius: 5px;
-	vertical-align: bottom;
-	color: rgb(100, 100, 100);
-}
-
-.send-button {
-	color: rgb(250, 250, 250);
-	border: solid 1px rgb(250, 250, 250);
-	display: inline-block;
-	padding: 5px;
-	border-radius: 5px;
-	vertical-align: bottom;
-}
-
-.cancel-button {
-	position: relative;
-	right: 195px;
-}
-
-.show-message {
-	background: rgb(50, 50, 50);
-	color: rgb(250, 250, 250);
-	border-radius: 5px;
-	display: inline-block;
-	margin-left: 20px;
-	width: 50%;
-	height: 90%;
-	overflow: scroll;
-	padding: 10px;
-	font-weight: 200;
-
-	.user {
-		font-weight: bold;
-	}
-
-	.user, .user-message {
-		display: inline-block;
-	}
-
-	.hero {
-		color: RGB(199, 223, 230);
-	}
-}
-
-.message-received {
-	margin: 7px 0;
-	font-size: 14px;
-}
 
