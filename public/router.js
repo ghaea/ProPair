@@ -133,6 +133,7 @@ var Router = Backbone.Router.extend({
 
 	singleProjectRoute: function(auth, id) {
 		$('.view').hide()
+		$('.slack-container').hide()
 		$("#detailed-info").empty()
 		$('.project-container').show()
 		console.log(arguments)
