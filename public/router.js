@@ -190,10 +190,10 @@ var Router = Backbone.Router.extend({
 				}, 
 				headers: {Authorization: authToken}			
 			})
-			$(".show-message")[50].scrollTop = 200
 		}
 		fetch()
 		setInterval(fetch, 50000)
+		$(".show-message")[50].scrollTop = 200
 
 	},
 
