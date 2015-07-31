@@ -183,6 +183,7 @@ var Router = Backbone.Router.extend({
 							
 						})
 						$(".single-message").prepend(messageReceived.$el)
+						$(".show-message")[50].scrollTop = 200
 					})		
 				},
 				error: function() {
