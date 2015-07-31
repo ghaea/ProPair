@@ -56,6 +56,7 @@ var ProjectView = Backbone.View.extend({
 		})
 
 		this.$('.slack-message').val("")
+		fetch()
 	},
 
 	pairButton: function() {

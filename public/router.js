@@ -1,4 +1,4 @@
-var storage, authToken
+var storage, authToken, fetch
 var email
 var Router = Backbone.Router.extend({
 
@@ -158,7 +158,8 @@ var Router = Backbone.Router.extend({
 
 		var messageHistory = new messageHistoryList()
 
-		var fetch = function() {
+		fetch = function() {
+			$(".single-message").val("")
 			messageHistory.fetch({
 				success: function(data) {
 
@@ -182,7 +183,7 @@ var Router = Backbone.Router.extend({
 			})
 		}
 		fetch()
-		//setInterval(fetch, 50000)
+		setInterval(fetch, 50000)
 	},
 
 	adminRoute: function() {
