@@ -150,7 +150,6 @@ var Router = Backbone.Router.extend({
 
 				$("#detailed-info").append(projectDetail.$el)
 				$('.slack-container').hide()
-				$('.slack-button').hide()
 			},
 
 			headers: {Authorization: authToken}
