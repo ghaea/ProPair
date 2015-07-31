@@ -169,6 +169,53 @@ input {
 
 }
 
+.singleProject {
+	background: rgba(50, 50, 50, .95);
+	color: rgb(250, 250, 250);
+	padding: 10px;
+	width: 100%;
+	height: 300px;
+	display: inline-block;
+	border-radius: 5px;
+	position: relative;
+
+	.project-info{
+
+		.projectName {
+			font-size: 20px;
+			margin-bottom: 5px;
+			color: rgb(25, 181, 188);
+			font-weight: bold;
+		}
+
+		.projectName:hover {
+			color: RGB(199, 223, 230);
+		}
+
+		.projectDescription {
+			margin-bottom: 10px;
+			height: 155px;
+			color: rgb(150, 150, 150);
+			overflow: scroll;
+
+		}
+
+		.projectCreator {
+			margin-bottom: 10px;
+		}
+
+
+		.languages {
+			margin-bottom: 10px;
+			font-weight: 200;
+		}
+
+		.deadline {
+			font-weight: 200;
+		}
+	}
+}
+
 .header {
 	font-size: 20px;
 	margin-bottom: 10px;
@@ -326,51 +373,23 @@ input {
 	height: 100vh;
 }
 
-.singleProject {
-	background: rgba(50, 50, 50, .95);
-	color: rgb(250, 250, 250);
-	padding: 10px;
-	width: 100%;
-	height: 300px;
-	display: inline-block;
-	border-radius: 5px;
-	position: relative;
+#detailed-info {
+	padding: 0 50px;
 
-	.project-info{
+	.projectView {
+		width: 100%;
+	}
 
-		.projectName {
-			font-size: 20px;
-			margin-bottom: 5px;
-			color: rgb(25, 181, 188);
-			font-weight: bold;
-		}
+	.singleProject {
+		background: none;
+		border-radius: 0;
+		height: 450px;
 
 		.projectName:hover {
-			color: RGB(199, 223, 230);
-		}
-
-		.projectDescription {
-			margin-bottom: 10px;
-			height: 155px;
-			color: rgb(150, 150, 150);
-			overflow: scroll;
-
-		}
-
-		.projectCreator {
-			margin-bottom: 10px;
-		}
-
-
-		.languages {
-			margin-bottom: 10px;
-			font-weight: 200;
-		}
-
-		.deadline {
-			font-weight: 200;
-		}
+			color: rgb(25, 181, 188);
+		};
 	}
+
 	.delete {
 		display: none;
 	}
@@ -395,26 +414,6 @@ input {
 		color: RGB(101, 236, 252);
 		border: solid 1px RGB(101, 236, 252);
 	}
-}
-
-#detailed-info {
-	padding: 0 50px;
-
-	.projectView {
-		width: 100%;
-	}
-
-	.singleProject {
-		background: none;
-		border-radius: 0;
-		height: 450px;
-
-		.projectName:hover {
-			color: rgb(25, 181, 188);
-		};
-	}
-
-	
 
 }
 
