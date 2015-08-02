@@ -9,6 +9,7 @@ var ProjectView = Backbone.View.extend({
 		"click .delete": "deleteProject",
 		"click .slack-button": "slackButton",
 		"click .send-button": "sendButton",
+		"keyup .slack-message": "enterButton",
 		"click .pair-button": "pairButton",
 		"click .cancel-button": "cancelButton"
 	},
@@ -57,6 +58,23 @@ var ProjectView = Backbone.View.extend({
 
 		this.$('.slack-message').val("")
 		fetch()
+
+
+	},
+
+	enterButton: function(evt) {
+		if(evt.keyCode === 13) {
+			var newMessage = new newMessageList()
+
+			newMessage.create({
+				text: this.$('.slack-message').val()
+			},
+				{headers: {Authorization: authToken}
+			})
+
+			this.$('.slack-message').val("")
+			fetch()
+		}
 	},
 
 	pairButton: function() {
