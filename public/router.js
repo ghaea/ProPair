@@ -174,7 +174,7 @@ var Router = Backbone.Router.extend({
 
 					_.each(messageHistory, function(a, i) {
 						var messages = messageHistory.models[i].attributes
-						messages.ts = moment(messages.ts).format('h:mm a')
+						console.log(messages.ts)
 						var messageReceived
 						_.each(messages, function(a, i) {
 							messageReceived = new MessageView({
@@ -183,6 +183,7 @@ var Router = Backbone.Router.extend({
 							
 						})
 						$(".single-message").prepend(messageReceived.$el)
+						$(".single-message").scrollTop(20000)
 					})		
 				},
 				error: function() {
@@ -193,7 +194,7 @@ var Router = Backbone.Router.extend({
 		}
 		fetch()
 		setInterval(fetch, 50000)
-		$(".single-message").scrollTop(20000)
+		
 
 	},
 
