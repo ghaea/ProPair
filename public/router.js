@@ -174,7 +174,7 @@ var Router = Backbone.Router.extend({
 
 					_.each(messageHistory, function(a, i) {
 						var messages = messageHistory.models[i].attributes
-				
+						messages.ts = moment(messages.ts).format('h:mm a')
 						var messageReceived
 						_.each(messages, function(a, i) {
 							messageReceived = new MessageView({
