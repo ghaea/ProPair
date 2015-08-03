@@ -183,7 +183,7 @@ var Router = Backbone.Router.extend({
 							
 						})
 						$(".single-message").prepend(messageReceived.$el)
-						$(".single-message").scrollTop(20000)
+						
 					})		
 				},
 				error: function() {
@@ -191,6 +191,7 @@ var Router = Backbone.Router.extend({
 				}, 
 				headers: {Authorization: authToken}			
 			})
+			$(".single-message").scrollTop(20000)
 		}
 		fetch()
 		setInterval(fetch, 50000)
