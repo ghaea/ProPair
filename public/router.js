@@ -3,8 +3,8 @@ var email
 var Router = Backbone.Router.extend({
 
 	routes: {
-		"dashboard/:auth": "dashboardRoute",
 		"": "defaultRoute",
+		"dashboard/:auth": "dashboardRoute",
 		"dashboard/:auth/newest": "newestRoute",
 		"profile/:auth": "profileRoute",
 		"newProject/:auth": "newProjectRoute",
@@ -12,7 +12,12 @@ var Router = Backbone.Router.extend({
 		"projects/:auth/:id": "singleProjectRoute",
 		"projects/:auth/:id/slack": "slackRoute"
 	},
-
+/*
+	defaultRoute: function() {
+		$('.view').hide()
+		$(".page-container").show()
+	},
+*/
 	dashboardRoute: function(auth) {
 
 		$('.view').hide()
@@ -57,11 +62,6 @@ var Router = Backbone.Router.extend({
 			},
 			headers: {Authorization: authToken}
 		})
-	},
-	
-	defaultRoute: function() {
-		$('.view').hide()
-		$(".page-container").show()
 	},
 
 	newestRoute: function() {
