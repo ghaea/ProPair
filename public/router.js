@@ -12,12 +12,12 @@ var Router = Backbone.Router.extend({
 		"projects/:auth/:id": "singleProjectRoute",
 		"projects/:auth/:id/slack": "slackRoute"
 	},
-/*
+
 	defaultRoute: function() {
 		$('.view').hide()
 		$(".page-container").show()
 	},
-*/
+
 	dashboardRoute: function(auth) {
 
 		$('.view').hide()
