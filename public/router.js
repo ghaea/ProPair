@@ -84,7 +84,7 @@ var Router = Backbone.Router.extend({
 			headers: {Authorization: authToken}
 		})
 	},
-
+/*
 	profileRoute: function() {
 		$('.view').hide()
 		$('.profile-container').show()
@@ -105,7 +105,7 @@ var Router = Backbone.Router.extend({
 			headers: {Authorization: authToken}
 		})
 	},
-
+*/
 	newProjectRoute: function() {
 		$('.view').hide()
 		$('.createProject-container').show()
@@ -191,7 +191,7 @@ var Router = Backbone.Router.extend({
 				}, 
 				headers: {Authorization: authToken}			
 			})
-			$(".single-message").scrollTop(20000)
+			$(".show-message").scrollTop(20000)
 		}
 		fetch()
 		setInterval(fetch, 50000)
