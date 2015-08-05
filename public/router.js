@@ -41,6 +41,7 @@ var Router = Backbone.Router.extend({
 
 					$("#newProject-list").append(page.$el)
 					$('.slack-container').hide()
+					$('.slack-button').hide()
 					$('.delete').hide()
 				})				
 			},
@@ -58,7 +59,8 @@ var Router = Backbone.Router.extend({
 					var pageModel = page.model.attributes
 
 					$("#myProject-list").append(page.$el)
-					$('.slack-container').hide()					
+					$('.slack-container').hide()
+					$('.slack-button').hide()					
 				})		
 			},
 			headers: {Authorization: authToken}
