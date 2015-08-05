@@ -31,7 +31,9 @@ var ProjectView = Backbone.View.extend({
 
 	deleteProject: function() {	
 		this.$el.remove()
-		this.model.destroy()
+		this.model.destroy({
+			headers: {Authorization: authToken}
+		})
 	},
 
 	template: Handlebars.compile( $("#project-template").html() )
