@@ -31,16 +31,9 @@ var ProjectView = Backbone.View.extend({
 
 	deleteProject: function() {
 		console.log('click')
-		authToken = auth
 
 		this.$el.remove()
 		this.model.destroy({
-			success: function() {
-				console.log('success')
-			},
-			error: function() {
-				console.log('error')
-			},
 			headers: {Authorization: authToken}
 		})
 	},
