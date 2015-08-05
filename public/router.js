@@ -10,7 +10,7 @@ var Router = Backbone.Router.extend({
 		"newProject/:auth": "newProjectRoute",
 		"admin": "adminRoute",
 		"projects/:auth/:id": "singleProjectRoute",
-		"projects/:auth/:id/slack": "slackRoute"
+		"projects/:auth/:id/slack": "slackRoute",
 	},
 
 	defaultRoute: function() {
