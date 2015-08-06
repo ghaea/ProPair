@@ -30,7 +30,7 @@ var ProjectView = Backbone.View.extend({
 	},
 
 	deleteProject: function() {
-		console.log('click')
+		console.log('click')  
 
 		this.$el.remove()
 		this.model.destroy({
