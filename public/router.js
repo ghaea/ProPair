@@ -85,7 +85,7 @@ var Router = Backbone.Router.extend({
 				})				
 			},
 			headers: {Authorization: authToken}
-		})
+		}) 
 	},
 /*
 	profileRoute: function() {
