@@ -12,18 +12,6 @@ $(document).on('ready', function() {
 		$(".signUp-window").hide()
 		$(".login-window").show()
 	})
-// Start Login Button
-	$(".login-button").on('click', function() {
-
-		router.navigate("dashboard", { trigger: true })
-	})
-
-	$('.password-input').on('keyup', function(evt){
-		if(evt.keyCode === 13){
-			router.navigate("dashboard", { trigger: true })
-		}
-	})
-// End Login Button
 
 	$(".signUp-button").on('click', function() {
 		$(".login-window").hide()
@@ -67,7 +55,7 @@ $(document).on('ready', function() {
 	})
 // End Register Button
 	$('.project-button').on('click', function() {
-		router.navigate("newProject", { trigger: true })
+		router.navigate("newProject/" + authToken, { trigger: true })
 	})
 
 	$('.signOut-button').on('click', function() {
@@ -75,15 +63,15 @@ $(document).on('ready', function() {
 	})
 
 	$('.profile-button').on('click', function() {
-		router.navigate("profile", { trigger: true })
+		router.navigate("profile/" + authToken, { trigger: true })
 	})
 
 	$('.cancelProject-button').on('click', function() {
-		router.navigate("dashboard", { trigger: true })
+		router.navigate("dashboard/" + authToken, { trigger: true })
 	})
 
 	$('.dashboard-button').on('click', function() {
-		router.navigate("dashboard", { trigger: true })
+		router.navigate("dashboard/" + authToken , { trigger: true })
 	})
 
 

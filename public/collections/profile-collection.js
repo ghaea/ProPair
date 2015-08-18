@@ -2,15 +2,19 @@ var profileList = Backbone.Collection.extend({
 
 	model: Profile,
 
-	url: "http://142cdc76.ngrok.io/users/invite",
+	url: "https://propair.herokuapp.com/users/invite",
 
 })
 
-var slackList = Backbone.Collection.extend({
+var pairList = Backbone.Collection.extend({
 
-	model: Slack,
+	model: Pair,
 
-	url: "http://142cdc76.ngrok.io/projects/" + id +"/slack",
+	url: function(){
+		return "https://propair.herokuapp.com/projects/request/" + projectNumber
+	}
 
 })
+
+
 

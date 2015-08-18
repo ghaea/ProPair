@@ -10,7 +10,7 @@
 			
 			<div class="landing-message">
 				<div class="navBar">
-					<div class="signIn-button">login</div>
+					<a href="http://propair.herokuapp.com/users/auth/slack" class="login-link">slack login</a>
 				</div>
 				<div class="welcome-container">
 					<span class="welcome">welcome to PROPAIR</span>
@@ -26,16 +26,9 @@
 				<input type="email" placeholder="email" class="signUp-input email"></input>
 				
 				<button class="register-button">Get Slack Invite</button>
-
-
 			</div>
 
-			<div class="login-window view">
-				<div class="close-button">x</div>
-				<input type="email" placeholder="slack username" class="signUp-input email-input"></input>
-				<input type="password" placeholder="password" class="signUp-input password-input"></input>
-				<button class="login-button">login</button>
-				<div class="first-login-message view">Check your email, follow instructions</div>
+				<div class="first-login-message view">Check your email, follow instructions ➝</div>
 			</div>
 
 
@@ -82,7 +75,8 @@
 	<div class="projects-container view">
 		<div class="navBar">
 			<div class="project-button">Create A Project</div>
-			<div class="profile-button">profile</div>
+
+			<!--<div class="profile-button">profile</div>-->
 			<div class="signOut-button">logout</div>
 			
 		</div>
@@ -105,14 +99,13 @@
 
 	<div class="createProject-container view">
 		<div class="navBar">
-			<div class="profile-button">profile</div>
+			<!--<div class="profile-button">profile</div>-->
 			<div class="signOut-button">logout</div>
 		</div>
 
 		<div class="newProject-body">
 			<div class="header">Create A New Project</div>
 			<input type="text" placeholder="clever title" class="input-title new"></input>
-			<input type="text" placeholder="slack username" class="input-creator new"></input>
 
 			<textarea class="textarea-description new">Project decription here</textarea>
 			
@@ -141,16 +134,15 @@
 
 	<div class="project-container view">
 		<div class="navBar">
-			<div class="profile-button">profile</div>
+			<div class="dashboard-button">dashboard</div>
+			<!--<div class="profile-button">profile</div>-->
 			<div class="signOut-button">logout</div>
 		</div>
 
 		<div id="detailed-info"></div>
 
-		<div class="slack-button">Slack Me</div>
-
-		<!-- slack messages -->
 	</div>
+	
 
 
 	<div class="feedback-container view">
@@ -184,15 +176,34 @@
 
 	<template id="project-template">
 		<div class="singleProject">
-			<div class="projectName">{{ title }}</div>
-			<div class="projectDescription">{{ description }}</div>
-			<div class="projectCreator">Creator: {{ creatorName }}</div>
-			<div class="languages">Skills Needed: 
-				{{ required_skill_1 }} {{ required_skill_2 }} {{ required_skill_3 }}
+			<div class="project-info">
+				<div class="projectName">{{ title }}</div>
+				<div class="projectDescription">{{ description }}</div>
+				<div class="projectCreator">Creator: {{ creator_name }}</div>
+				<div class="languages">Skills Needed: 
+					{{ required_skill_1 }} {{ required_skill_2 }} {{ required_skill_3 }}
+					</div>
+				<div class="deadline">Deadline {{ deadline }}</div>
+				<div class="{{ status }}"></div>
+				<button class="delete">delete</button>
+				{{#if partner_id}}
+					<div class="slack-button">Slack: {{ creator_name }}</div>
+				{{else}}
+					<div class="pair-button">Pair Me</div>
+				{{/if}}
+			</div>
+			<div class="slack-container view">			
+				<div class="show-message">
+					<div class="hero">Start a Screen Hero session by sending<br><em>/hero @</em>username</div>
+					<div class="single-message"></div>
 				</div>
-			<div class="deadline">Deadline {{ deadline }}</div>
-			<div class="{{ status }}"></div>
-			<button class="delete">delete</button>
+				<div class="input-message">
+					<textarea class="slack-message"></textarea>
+					<div class="cancel-button text">cancel</div>
+					<div class="send-button text">send</div>
+				</div>
+			</div>
+
 
 			<!--Feedback Info-->
 		</div>
@@ -205,6 +216,11 @@
 		<div class="userProjects">{{ projects }}</div>
 		<button class="delete-button">X</button>
 		<button class="edit-button">edit</button>		
+	</template>
+
+	<template id="message-template">
+		<div class="user"><b>{{ user }}</b> {{ ts }}:</div>
+		<div class="user-message">{{ text }}</div>
 	</template>
 
 
@@ -222,7 +238,7 @@
 	<script src="collections/project-collection.js"></script>
 
 	<script src="views/profile-view.js"></script>
-	<script src="views/landing-view.js"></script>
+	<script src="views/message-view.js"></script>
 	<script src="views/project-view.js"></script>
 	
 	<script src="router.js"></script>

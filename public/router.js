@@ -1,12 +1,16 @@
+var storage, authToken, fetch
+var email
 var Router = Backbone.Router.extend({
 
 	routes: {
 		"": "defaultRoute",
-		"dashboard": "dashboardRoute",
-		"profile": "profileRoute",
-		"newProject": "newProjectRoute",
+		"dashboard/:auth": "dashboardRoute",
+		"dashboard/:auth/newest": "newestRoute",
+		"profile/:auth": "profileRoute",
+		"newProject/:auth": "newProjectRoute",
 		"admin": "adminRoute",
-		"projects/:id": "singleProjectRoute"
+		"projects/:auth/:id": "singleProjectRoute",
+		"projects/:auth/:id/slack": "slackRoute",
 	},
 
 	defaultRoute: function() {
@@ -14,19 +18,20 @@ var Router = Backbone.Router.extend({
 		$(".page-container").show()
 	},
 
-	dashboardRoute: function() {
+	dashboardRoute: function(auth) {
 
 		$('.view').hide()
 		$("#newProject-list").empty()
 		$("#myProject-list").empty()
 		$('.projects-container').show()
+
+		authToken = auth
+
 	// for project list
 		var collection = new projectList()
 
-		console.log(collection)
-
 		collection.fetch({
-			success: function(data, res) {
+			success: function(data) {
 				_.each(collection, function(a, i) {
 					var page = new ProjectView({
 						model: collection.at(i)
@@ -35,33 +40,54 @@ var Router = Backbone.Router.extend({
 					var pageModel = page.model.attributes
 
 					$("#newProject-list").append(page.$el)
-				})
-				
+					$('.slack-container').hide()
+					$('.slack-button').hide()
+					$('.delete').hide()
+				})				
 			},
-
-			headers: {Authorization: "TOKEN"}
+			headers: {Authorization: authToken}
 		})
 
 	// for my project list
-		var myProjects = new projectList()
-
+		var myProjects = new myProjectList()
 		myProjects.fetch({
 			success: function(data) {
-				var page = new ProjectView({
-					model: myProjects.at(1)
-				})
+				_.each(myProjects, function(a, i){
+					var page = new ProjectView({
+						model: myProjects.at(i)
+					})
+					var pageModel = page.model.attributes
 
-				var pageModel = page.model.attributes
-
-				$("#myProject-list").append(page.$el)
-
+					$("#myProject-list").append(page.$el)
+					$('.slack-container').hide()
+					$('.slack-button').hide()					
+				})		
 			},
-
-			headers: {Authorization: "TOKEN"}
+			headers: {Authorization: authToken}
 		})
-
 	},
 
+	newestRoute: function() {
+		$("#newProject-list").empty()
+		$('.newest').hide()
+		$('.oldest').show()
+
+		var collection = new projectList()
+		
+		collection.fetch({
+			success: function(data) {
+				_.each(collection, function(a, i) {
+					var page = new ProjectView({
+						model: collection.at(i)
+					})
+					var pageModel = page.model.attributes
+					$("#newProject-list").prepend(page.$el)
+				})				
+			},
+			headers: {Authorization: authToken}
+		})  
+	},
+/*
 	profileRoute: function() {
 		$('.view').hide()
 		$('.profile-container').show()
@@ -79,46 +105,44 @@ var Router = Backbone.Router.extend({
 				$("#userInfo-list").append(user.$el)
 			},
 
-			headers: {Authorization: "TOKEN"}
+			headers: {Authorization: authToken}
 		})
 	},
-
+*/
 	newProjectRoute: function() {
 		$('.view').hide()
 		$('.createProject-container').show()
 
-		$('.saveProject-button').on('click', function() {
-			console.log('click')
-		
-			var newProject = new projectList()
-
+		$('.saveProject-button').on('click', function() {	
+			var newProject = new newProjectList()
+			console.log('new')
 			newProject.create({
 				title: $('.input-title').val(),
 				description: $('.textarea-description').val(),
-				creatorName: $('.input-creator').val(),
 				required_skill_1: $('.js:checkbox:checked').val(),
 				required_skill_2: $('.ruby:checkbox:checked').val(),
 				required_skill_3: $('.swift:checkbox:checked').val(),
 				deadline: $('.input-date').val(),	
 			},
-				{headers: {Authorization: "TOKEN"}
+				{headers: {Authorization: authToken}
 			})
 
 			$('input').val("")
 			$('.textarea-description').val("")
 
-			router.navigate("dashboard", { trigger: true })
-
+			router.navigate("dashboard/" + authToken, { trigger: true })
 		})
 	},
 
-	singleProjectRoute: function() {
+	singleProjectRoute: function(auth, id) {
 		$('.view').hide()
 		$("#detailed-info").empty()
 		$('.project-container').show()
-		
+
+		authToken = auth
+		projectNumber = id
 		var project = new projectId()
-		console.log(id, project)
+
 		project.fetch({
 			success: function(data) {
 				var projectDetail = new ProjectView({
@@ -128,26 +152,58 @@ var Router = Backbone.Router.extend({
 				var projectModel = projectDetail.model.attributes
 
 				$("#detailed-info").append(projectDetail.$el)
+				$('.slack-container').hide()
 			},
 
-			headers: {Authorization: "TOKEN"}
+			headers: {Authorization: authToken}
 		})
+	},
 
-		$('.slack-button').on("click", function() {
-			var newSlack = new slackList()
+	slackRoute: function(auth, id) {
+		$('.slack-container').show()
+		$('.slack-button').hide()
+		$('.pair-button').hide()
 
-			newSlack.create({
-				user1: "ptnielsen55",
-				user2: "ghaea"
-			},
-			{ headers: {Authorization: "TOKEN"}
+		authToken = auth
+		projectNumber = id
+
+		var messageHistory = new messageHistoryList()
+
+		fetch = function() {
+			$(".single-message").empty()
+
+			messageHistory.fetch({
+				success: function(data) {
+
+					_.each(messageHistory, function(a, i) {
+						var messages = messageHistory.models[i].attributes
+						messages.ts = moment(messages.ts.toString(), 'X').format('MMM Do YY, h:mm:ss a')
+						var messageReceived
+						_.each(messages, function(a, i) {
+							messageReceived = new MessageView({
+								model: messages
+							})
+							
+						})
+						$(".single-message").prepend(messageReceived.$el)
+						
+					})
+					$(".show-message").scrollTop(20000)		
+				},
+				error: function() {
+					console.log('error', arguments)
+				}, 
+				headers: {Authorization: authToken}			
 			})
-		})
+			
+		}
+		fetch()
+		setInterval(fetch, 50000)
+		
 
 	},
 
 	adminRoute: function() {
 		console.log("this is the adminRoute")
 	}
-
 })
