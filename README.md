@@ -9,3 +9,10 @@ Check out the screen-shots folder for visuals.
 pro-pair.herokuapp.com
 
 ![Alt text] (https://github.com/ghaea/ProPair/blob/master/screen-shots/1-landing-page.png)
+![Alt text] (https://github.com/ghaea/ProPair/blob/master/screen-shots/2-dashboard.png)
+![Alt text] (https://github.com/ghaea/ProPair/blob/master/screen-shots/3-create.png "Create a New Project")
+![Alt text] (https://github.com/ghaea/ProPair/blob/master/screen-shots/4-new-project.png "View New Project")
+![Alt text] (https://github.com/ghaea/ProPair/blob/master/screen-shots/5-my-project.png "View My Project")
+![Alt text] (https://github.com/ghaea/ProPair/blob/master/screen-shots/7-slack.png "View of Slack Chat Box")
+![Alt text] (https://github.com/ghaea/ProPair/blob/master/screen-shots/6-screenhero.png "View of Screenhero Session")
+
