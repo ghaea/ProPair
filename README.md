@@ -8,3 +8,4 @@ Check out the screen-shots folder for visuals.
 
 pro-pair.herokuapp.com
 
+![Alt text] (https://github.com/ghaea/ProPair/blob/master/screen-shots/1-landing-page.png)
